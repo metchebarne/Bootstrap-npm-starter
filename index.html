@@ -24,6 +24,62 @@
         <p>If this button appears blue and the link appears purple, you've done it!</p>
       </div>
 
+      <section class="contact-section mt-5" aria-labelledby="contact-heading">
+        <div class="row">
+          <div class="col-lg-8">
+            <h2 id="contact-heading">Contact us</h2>
+            <p class="text-muted">Complete the form and we'll get back to you shortly.</p>
+
+            <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="contact">
+              <div class="d-none">
+                <label>Don't fill this out if you're human: <input name="bot-field"></label>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="name" name="name" autocomplete="name" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="email">Email address</label>
+                  <input type="email" class="form-control" id="email" name="email" autocomplete="email" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="phone">Phone <span class="text-muted">(optional)</span></label>
+                  <input type="tel" class="form-control" id="phone" name="phone" autocomplete="tel">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="subject">Subject</label>
+                  <input type="text" class="form-control" id="subject" name="subject" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+              </div>
+
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="consent" name="consent" required>
+                <label class="form-check-label" for="consent">I agree to be contacted about my request.</label>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </form>
+
+            <div class="contact-success d-none" id="contact-success" tabindex="-1" role="status" aria-live="polite">
+              <div class="success-check" aria-hidden="true"></div>
+              <h3>Thank you!</h3>
+              <p class="mb-0">Your message has been sent successfully. We'll be in touch soon.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <button type="button" class="btn btn-primary mr-3" data-toggle="modal" data-target="#exampleModal">Toggle example modal</button>
       <a href="#" class="text-success">Example link</a>
 

@@ -45,7 +45,7 @@ $success: #7952b3;
 // @import "bootstrap/scss/code";
 @import "bootstrap/scss/grid";
 // @import "bootstrap/scss/tables";
-// @import "bootstrap/scss/forms";
+@import "bootstrap/scss/forms";
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/transitions";
 // @import "bootstrap/scss/dropdown";
@@ -87,4 +87,79 @@ body {
 // Style Bootstrap icons
 .bi {
   fill: currentcolor;
+}
+
+.contact-section {
+  padding: 2rem;
+  background-color: $gray-100;
+  border: 1px solid rgba($body-color, .1);
+  border-radius: $border-radius;
+}
+
+.contact-success {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.success-check {
+  position: relative;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 auto 1.5rem;
+  border: .25rem solid $success;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(.5);
+}
+
+.success-check::after {
+  position: absolute;
+  top: 1rem;
+  left: 1.35rem;
+  width: 1rem;
+  height: 1.75rem;
+  content: "";
+  border-right: .25rem solid $success;
+  border-bottom: .25rem solid $success;
+  opacity: 0;
+  transform: rotate(45deg) scale(.5);
+}
+
+.contact-success-visible .success-check {
+  animation: success-pop .45s ease-out forwards;
+}
+
+.contact-success-visible .success-check::after {
+  animation: success-draw .35s .35s ease-out forwards;
+}
+
+@keyframes success-pop {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes success-draw {
+  to {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-success-visible .success-check,
+  .contact-success-visible .success-check::after {
+    animation: none;
+  }
+
+  .contact-success-visible .success-check {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .contact-success-visible .success-check::after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
 }

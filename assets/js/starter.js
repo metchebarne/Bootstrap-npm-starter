@@ -20,3 +20,37 @@
 
 import "../../node_modules/bootstrap/js/dist/util.js";
 import "../../node_modules/bootstrap/js/dist/modal.js";
+
+const contactForm = document.querySelector('form[name="contact"]');
+const contactSuccess = document.querySelector('#contact-success');
+
+if (contactForm && contactSuccess) {
+	contactForm.addEventListener('submit', async (event) => {
+		event.preventDefault();
+
+		const submitButton = contactForm.querySelector('button[type="submit"]');
+		submitButton.disabled = true;
+		submitButton.textContent = 'Sending...';
+
+		try {
+			const response = await fetch('/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: new URLSearchParams(new FormData(contactForm)).toString()
+			});
+
+			if (!response.ok) {
+				throw new Error('Form submission failed');
+			}
+
+			contactForm.classList.add('d-none');
+			contactSuccess.classList.remove('d-none');
+			contactSuccess.classList.add('contact-success-visible');
+			contactSuccess.focus();
+		} catch (error) {
+			submitButton.disabled = false;
+			submitButton.textContent = 'Send message';
+			submitButton.insertAdjacentHTML('afterend', '<small class="form-text text-danger" role="alert">Unable to send your message. Please try again.</small>');
+		}
+	});
+}

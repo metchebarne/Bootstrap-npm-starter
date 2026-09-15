@@ -96,11 +96,6 @@ body {
   border-radius: $border-radius;
 }
 
-.contact-success {
-  padding: 2rem 1rem;
-  text-align: center;
-}
-
 .success-check {
   position: relative;
   width: 4.5rem;
@@ -125,11 +120,11 @@ body {
   transform: rotate(45deg) scale(.5);
 }
 
-.contact-success-visible .success-check {
+.success-check-visible {
   animation: success-pop .45s ease-out forwards;
 }
 
-.contact-success-visible .success-check::after {
+.success-check-visible::after {
   animation: success-draw .35s .35s ease-out forwards;
 }
 
@@ -148,17 +143,17 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-success-visible .success-check,
-  .contact-success-visible .success-check::after {
+  .success-check-visible,
+  .success-check-visible::after {
     animation: none;
   }
 
-  .contact-success-visible .success-check {
+  .success-check-visible {
     opacity: 1;
     transform: scale(1);
   }
 
-  .contact-success-visible .success-check::after {
+  .success-check-visible::after {
     opacity: 1;
     transform: rotate(45deg) scale(1);
   }

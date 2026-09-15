@@ -22,9 +22,9 @@ import "../../node_modules/bootstrap/js/dist/util.js";
 import "../../node_modules/bootstrap/js/dist/modal.js";
 
 const contactForm = document.querySelector('form[name="contact"]');
-const contactSuccess = document.querySelector('#contact-success');
+const formSuccessModal = document.querySelector('#formSuccessModal');
 
-if (contactForm && contactSuccess) {
+if (contactForm && formSuccessModal) {
 	contactForm.addEventListener('submit', async (event) => {
 		event.preventDefault();
 
@@ -43,14 +43,18 @@ if (contactForm && contactSuccess) {
 				throw new Error('Form submission failed');
 			}
 
+			contactForm.reset();
 			contactForm.classList.add('d-none');
-			contactSuccess.classList.remove('d-none');
-			contactSuccess.classList.add('contact-success-visible');
-			contactSuccess.focus();
+			$(formSuccessModal).find('.success-check').addClass('success-check-visible');
+			$(formSuccessModal).modal('show');
 		} catch (error) {
 			submitButton.disabled = false;
 			submitButton.textContent = 'Send message';
-			submitButton.insertAdjacentHTML('afterend', '<small class="form-text text-danger" role="alert">Unable to send your message. Please try again.</small>');
+			const errorMessage = contactForm.querySelector('[role="alert"]');
+
+			if (!errorMessage) {
+				submitButton.insertAdjacentHTML('afterend', '<small class="form-text text-danger" role="alert">Unable to send your message. Please try again.</small>');
+			}
 		}
 	});
 }

@@ -71,14 +71,26 @@
               <button type="submit" class="btn btn-primary">Send message</button>
             </form>
 
-            <div class="contact-success d-none" id="contact-success" tabindex="-1" role="status" aria-live="polite">
-              <div class="success-check" aria-hidden="true"></div>
-              <h3>Thank you!</h3>
-              <p class="mb-0">Your message has been sent successfully. We'll be in touch soon.</p>
-            </div>
           </div>
         </div>
       </section>
+
+      <div class="modal fade" id="formSuccessModal" tabindex="-1" role="dialog" aria-labelledby="formSuccessModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content text-center">
+            <div class="modal-header border-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body pt-0 pb-4">
+              <div class="success-check" aria-hidden="true"></div>
+              <h3 id="formSuccessModalLabel">Formulario enviado</h3>
+              <p class="mb-0">Gracias por escribirnos. Recibimos tu mensaje correctamente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <button type="button" class="btn btn-primary mr-3" data-toggle="modal" data-target="#exampleModal">Toggle example modal</button>
       <a href="#" class="text-success">Example link</a>
